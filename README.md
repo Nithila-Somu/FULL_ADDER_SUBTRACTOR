@@ -37,53 +37,51 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+**FULL ADDER**
 
-**Procedure**
+![Screenshot 2024-12-07 105703](https://github.com/user-attachments/assets/fe96b657-c587-44ae-a8b5-2b8ec94a6bd5)
 
-Write the detailed procedure here
+**FULL SUBRACTOR**
+
+![Screenshot 2024-12-07 105754](https://github.com/user-attachments/assets/631a1a32-10bb-4d54-870a-3bd0795cd102)
 
 **Program:**
+
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. 
+```python
+Developed by:Jeya shivani . S
+RegisterNumber:24010976
 ```
-module exp_4a(sum, cout, a, b, cin);
-    output sum;
-    output cout;
-    input a;
-    input b;
-    input cin;
+```python
+**Full adder**
 
-	 wire w1,w2,w3;
-	 assign w1=a^b;
-	 assign w2=a&b;
-	 assign w3=w1&cin;
-	 assign sum=w1^cin;
-	 assign cout=w2|w3;
-endmodule
+    module fa(a,b,cin,sum,carry);
+    input a,b,cin;
+    output sum,carry;
+    assign sum=( (a ^ b)^cin);
+    assign carry= ( (a & b)| ( cin &(a ^ b )));
+    endmodule
+
+**Full subractor**
+
+    module fs(a,b,bin,difference,borrow);
+    input a,b,bin;
+    output difference,borrow;
+    assign difference= ( (a ^ b)^bin);
+    assign borrow= ( ( ~a & b)| ( bin & (~(a ^ b ))));
+    endmodule
 ```
-```
-
-module exp_4b(df, bo, a, b, bin);
-    output df;
-    output bo;
-    input a;
-    input b;
-    input bin;
-	wire w1,w2,w3;
-	 assign w1=a^b;
-	 assign w2=(~a&b);
-	 assign w3=(~w1&bin);
-	 assign df=w1^bin;
-	 assign bo=w2|w3;
-
-endmodule
-```
-
-
 
 **RTL Schematic**
+![Screenshot 2024-12-07 161748](https://github.com/user-attachments/assets/f52b9eba-ae47-4b68-86fc-0f8438e0a024)
+
+![Screenshot 2024-12-07 162127](https://github.com/user-attachments/assets/d755d0cb-1669-4621-99c2-89ff5d741bd0)
 
 **Output Timing Waveform**
-![4 1](https://github.com/user-attachments/assets/78ac8a93-e139-4794-855b-73a93ac4296b)
-![42](https://github.com/user-attachments/assets/5d61d790-aa4d-4192-9363-1a5f91267ec2)
+
+![image](https://github.com/user-attachments/assets/7991dc63-56be-4839-ad9e-f80408593d27)
+
+![image](https://github.com/user-attachments/assets/cda2a52d-8fc0-4130-afc3-7936e0f6859d)
 
 
 **Result:**
